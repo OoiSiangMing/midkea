@@ -23,8 +23,9 @@
   position: absolute; /* Absolute positioning */
   top: 10px; /* Position from top */
   right: 10px; /* Position from right */
-  border-radius: 20px;    
-  padding: 5px 15px;
+  border-radius: 10px; /* Make the border-radius smaller */  
+  padding: 5px 10px; /* Adjust padding to make the button smaller */
+  font-size: 0.9em; /* Adjust font size to make the button text smaller */
   background-color: #3498db;
   color: #fff;
   text-decoration: none;
