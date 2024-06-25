@@ -7,8 +7,19 @@
 	font-family: Raleway, sans-serif;
 }
 
+h2{	
+	justify-content: center;
+	padding-top: 40px;
+	
+}
+
+
 body {
-	background: linear-gradient(90deg, #54567a, #8f92cf);		
+
+  background-image: url("public/img/adminbg.jpg");
+  background-size: cover;
+  background-attachment: fixed;
+  overflow: hidden;
 }
 
 .container {
@@ -16,6 +27,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	padding-bottom: 60px;
 }
 
 .screen {		
