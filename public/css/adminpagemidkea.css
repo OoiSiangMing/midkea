@@ -11,7 +11,11 @@
 }
 
 .shop_name {
+  display: flex;
+  align-items: center; /* Center align vertically */
+  justify-content: center; /* Center align horizontally */
   color: #fff; /* Set the color to white or any other color you prefer */
+  gap: 20px; /* Add space between the image and text */
 }
 
 .shop_name img {
