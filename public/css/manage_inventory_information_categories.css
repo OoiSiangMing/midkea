@@ -1,9 +1,10 @@
 .welcome {
-  padding:50px;
+  padding: 50px;
   text-align: center;
   background-color: #000000;
   display: flex;
   align-items: flex-start; /* Align content to the top */
+  position: relative; /* Add this to use positioning within the container */
 }
 
 .shop_name {
@@ -15,7 +16,7 @@
   height: 150px; /* Adjust the height accordingly */
 }
 
-.sign-out {
+.back {
   position: absolute; /* Absolute positioning */
   top: 10px; /* Position from top */
   right: 10px; /* Position from right */
