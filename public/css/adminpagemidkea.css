@@ -6,6 +6,12 @@
   align-items: flex-start; /* Align content to the top */
 }
 
+.shop_name_container {
+  flex: 1; /* Take up available space */
+  display: flex;
+  align-items: center; /* Center align vertically */
+}
+
 .shop_name {
   color: #fff; /* Set the color to white or any other color you prefer */
 }
@@ -15,14 +21,16 @@
   height: 150px; /* Adjust the height accordingly */
 }
 
+.sign_out_container {
+  flex-shrink: 0; /* Do not shrink */
+}
+
 .sign-out {
-  position: relative;
-  left: 300px;
-  bottom:-15px;
-  border-radius: 20px;	
+  border-radius: 20px;    
   padding: 5px 15px;
   background-color: #3498db;
-  color: #fff; 
+  color: #fff;
+  text-decoration: none;
 }
 
 .button-container {
