@@ -1,15 +1,13 @@
 .welcome {
-  padding:50px;
+  padding: 50px;
   text-align: center;
   background-color: #000000;
   display: flex;
-  align-items: flex-start; /* Align content to the top */
-}
-
-.shop_name_container {
-  flex: 1; /* Take up available space */
-  display: flex;
   align-items: center; /* Center align vertically */
+  justify-content: center; /* Center align horizontally */
+  width: 100%; /* Full width */
+  position: relative; /* Relative positioning for the sign-out button */
+  box-sizing: border-box; /* Include padding in width */
 }
 
 .shop_name {
@@ -21,11 +19,10 @@
   height: 150px; /* Adjust the height accordingly */
 }
 
-.sign_out_container {
-  flex-shrink: 0; /* Do not shrink */
-}
-
 .sign-out {
+  position: absolute; /* Absolute positioning */
+  top: 10px; /* Position from top */
+  right: 10px; /* Position from right */
   border-radius: 20px;    
   padding: 5px 15px;
   background-color: #3498db;
