@@ -44,35 +44,44 @@ const updateForm = document.getElementById('update-record-form');
 
 // Update item details
 updateForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const itemId = document.getElementById('update_item_id').value;
-    const name = document.getElementById('update_name').value;
-    const category = document.getElementById('update_category').value;
-    const price = document.getElementById('update_price').value;
+  e.preventDefault();
+  
+  const itemId = document.getElementById('update_item_id').value.trim();
+  const name = document.getElementById('update_name').value.trim();
+  const category = document.getElementById('update_category').value.trim();
+  const price = document.getElementById('update_price').value.replace('RM', '').trim();
 
-    update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
-        'Name': name,
-        'Category': category,
-        'Price': price
-    })
-    .then(() => {
-        alert('Record updated successfully!');
-        // Clear the search and update forms
-        searchItemId.value = '';
-        updateForm.reset();
-    })
-    .catch((error) => {
-        console.error('Error updating record:', error);
-    });
+  // Validate input fields
+  if (itemId === '' || name === '' || category === '' || price === '') {
+      alert('Please fill in all fields before updating.');
+      return; // Stop the form submission
+  }
+
+  update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
+      'Item ID': itemId,
+      'Name': name,
+      'Category': category,
+      'Price': price
+  })
+  .then(() => {
+      alert('Record updated successfully!');
+      // Clear the search and update forms
+      searchItemId.value = '';
+      updateForm.reset();
+  })
+  .catch((error) => {
+      console.error('Error updating record:', error);
+  });
 });
 
-// Ensure "RM" prefix and restrict input to numbers only
+
+// Ensure "RM" prefix and restrict input to numbers and dot only
 const priceInput = document.getElementById('update_price');
 
 priceInput.addEventListener('input', () => {
     if (!priceInput.value.startsWith('RM')) {
-        priceInput.value = 'RM' + priceInput.value.replace(/[^0-9]/g, '');
+        priceInput.value = 'RM' + priceInput.value.replace(/[^0-9.]/g, '');
     } else {
-        priceInput.value = 'RM' + priceInput.value.slice(2).replace(/[^0-9]/g, '');
+        priceInput.value = 'RM' + priceInput.value.slice(2).replace(/[^0-9.]/g, '');
     }
 });
