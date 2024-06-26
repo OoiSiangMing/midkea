@@ -32,7 +32,7 @@ form.addEventListener('submit', (e) => {
 
   // Create a new record in the database
   set(ref(database, 'Inventory Info/' + itemId), {
-    Item ID: itemId,
+    ItemID: itemId,
     Name: name,
     Category: category,
     Price: price
