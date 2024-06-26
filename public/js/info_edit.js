@@ -51,7 +51,6 @@ updateForm.addEventListener('submit', (e) => {
     const price = document.getElementById('update_price').value;
 
     update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
-        'Item ID': itemId,
         'Name': name,
         'Category': category,
         'Price': price
@@ -67,21 +66,13 @@ updateForm.addEventListener('submit', (e) => {
     });
 });
 
-// Restrict input to numbers only and ensure "RM" prefix
+// Ensure "RM" prefix and restrict input to numbers only
 const priceInput = document.getElementById('update_price');
-priceInput.addEventListener('input', (e) => {
-    const value = priceInput.value.replace(/[^0-9]/g, '');
-    priceInput.value = value;
-});
 
-priceInput.addEventListener('focus', () => {
+priceInput.addEventListener('input', () => {
     if (!priceInput.value.startsWith('RM')) {
-        priceInput.value = 'RM' + priceInput.value;
-    }
-});
-
-priceInput.addEventListener('blur', () => {
-    if (priceInput.value === 'RM') {
-        priceInput.value = '';
+        priceInput.value = 'RM' + priceInput.value.replace(/[^0-9]/g, '');
+    } else {
+        priceInput.value = 'RM' + priceInput.value.slice(2).replace(/[^0-9]/g, '');
     }
 });
