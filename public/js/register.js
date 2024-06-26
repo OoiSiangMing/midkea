@@ -20,9 +20,14 @@ const database = getDatabase(app);
 // Reference to the form element
 const form = document.getElementById('add-record-form');
 
+// Add a console log to confirm the script is running
+console.log('Script loaded');
+
 // Add submit event listener
 form.addEventListener('submit', (e) => {
   e.preventDefault();
+
+  console.log('Form submitted');
 
   // Get form values
   const itemId = document.getElementById('item_id').value;
@@ -30,12 +35,14 @@ form.addEventListener('submit', (e) => {
   const category = document.getElementById('category').value;
   const price = document.getElementById('price').value;
 
-  // Create a new record in the database
-  set(ref(database, 'Inventory Info/' + itemId), {
-    Item ID: itemId,
-    Name: name,
-    Category: category,
-    Price: price
+  console.log(`Item ID: ${itemId}, Name: ${name}, Category: ${category}, Price: ${price}`);
+
+  // Create a new record in the database with the desired structure
+  set(ref(database, 'Inventory Info/Item ID: ' + itemId), {
+    'Item ID': itemId,
+    'Name': name,
+    'Category': category,
+    'Price': price
   })
   .then(() => {
     alert('Record added successfully!');
