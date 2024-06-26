@@ -31,11 +31,11 @@ form.addEventListener('submit', (e) => {
   const price = document.getElementById('price').value;
 
   // Create a new record in the database
-  set(ref(database, 'inventory/' + itemId), {
-    itemId: itemId,
-    name: name,
-    category: category,
-    price: price
+  set(ref(database, 'Inventory Info/' + itemId), {
+    Item ID: itemId,
+    Name: name,
+    Category: category,
+    Price: price
   })
   .then(() => {
     alert('Record added successfully!');
