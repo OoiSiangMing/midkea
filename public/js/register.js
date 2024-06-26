@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, set } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getDatabase, ref, set, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -37,19 +37,31 @@ form.addEventListener('submit', (e) => {
 
   console.log(`Item ID: ${itemId}, Name: ${name}, Category: ${category}, Price: ${price}`);
 
-  // Create a new record in the database with the desired structure
-  set(ref(database, 'Inventory Info/Item ID: ' + itemId), {
-    'Item ID': itemId,
-    'Name': name,
-    'Category': category,
-    'Price': price
-  })
-  .then(() => {
-    alert('Record added successfully!');
-    // Clear the form
-    form.reset();
-  })
-  .catch((error) => {
-    console.error('Error adding record: ', error);
+  const dbRef = ref(database);
+
+  // Check if the Item ID already exists
+  get(child(dbRef, `Inventory Info/Item ID: ${itemId}`)).then((snapshot) => {
+    if (snapshot.exists()) {
+      // Item ID already exists
+      alert('Error: Item ID already exists. Please use a different Item ID.');
+    } else {
+      // Item ID does not exist, create a new record
+      set(ref(database, 'Inventory Info/Item ID: ' + itemId), {
+        'Item ID': itemId,
+        'Name': name,
+        'Category': category,
+        'Price': price
+      })
+      .then(() => {
+        alert('Record added successfully!');
+        // Clear the form
+        form.reset();
+      })
+      .catch((error) => {
+        console.error('Error adding record: ', error);
+      });
+    }
+  }).catch((error) => {
+    console.error('Error checking Item ID: ', error);
   });
 });
