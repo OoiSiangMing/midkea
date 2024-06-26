@@ -75,13 +75,9 @@ updateForm.addEventListener('submit', (e) => {
 });
 
 
-// Ensure "RM" prefix and restrict input to numbers and dot only
+// Restrict input to numbers and dot only
 const priceInput = document.getElementById('update_price');
 
 priceInput.addEventListener('input', () => {
-    if (!priceInput.value.startsWith('RM')) {
-        priceInput.value = 'RM' + priceInput.value.replace(/[^0-9.]/g, '');
-    } else {
-        priceInput.value = 'RM' + priceInput.value.slice(2).replace(/[^0-9.]/g, '');
-    }
+    priceInput.value = priceInput.value.replace(/[^0-9.]/g, '');
 });
