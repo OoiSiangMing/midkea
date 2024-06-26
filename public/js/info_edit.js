@@ -51,6 +51,7 @@ updateForm.addEventListener('submit', (e) => {
     const price = document.getElementById('update_price').value;
 
     update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
+        'Item ID': itemId,
         'Name': name,
         'Category': category,
         'Price': price
@@ -64,4 +65,23 @@ updateForm.addEventListener('submit', (e) => {
     .catch((error) => {
         console.error('Error updating record:', error);
     });
+});
+
+// Restrict input to numbers only and ensure "RM" prefix
+const priceInput = document.getElementById('update_price');
+priceInput.addEventListener('input', (e) => {
+    const value = priceInput.value.replace(/[^0-9]/g, '');
+    priceInput.value = value;
+});
+
+priceInput.addEventListener('focus', () => {
+    if (!priceInput.value.startsWith('RM')) {
+        priceInput.value = 'RM' + priceInput.value;
+    }
+});
+
+priceInput.addEventListener('blur', () => {
+    if (priceInput.value === 'RM') {
+        priceInput.value = '';
+    }
 });
