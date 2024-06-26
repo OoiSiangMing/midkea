@@ -53,7 +53,7 @@ updateForm.addEventListener('submit', (e) => {
 
   // Validate input fields
   if (itemId === '' || name === '' || category === '' || price === '') {
-      alert('Please fill in all fields before updating.');
+      alert('Please search the item ID first');
       return; // Stop the form submission
   }
 
