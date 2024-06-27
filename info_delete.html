@@ -67,15 +67,15 @@
     }
 
     .btn {
-            padding: 10px 20px;
-            font-size: 16px;
-            cursor: pointer;
-            border: none;
-            border-radius: 4px;
-            text-decoration: none;
-            display: inline-block;
-            margin-top: 10px;
-        }
+      padding: 10px 20px;
+      font-size: 16px;
+      cursor: pointer;
+      border: none;
+      border-radius: 4px;
+      text-decoration: none;
+      display: inline-block;
+      margin-top: 10px;
+    }
 
     .btn-primary {
       background-color: #007bff;
@@ -108,18 +108,17 @@
         padding: 10px;
       }
     }
-
   </style>
 </head>
 <body>
   <div class="container">
     <h3>View Record</h3>
 
-    <form action="" method="POST">
+    <form id="search-form">
       <div class="form-group">
         <div class="input-group">
-          <label for="viewkey" class="input-group-addon"><i class="fas fa-search"></i></label>
-          <input type="text" id="viewkey" class="form-control" name="viewkey" placeholder="Type your search Item ID here" autocomplete="off" autofocus required>
+          <label for="search_item_id" class="input-group-addon"><i class="fas fa-search"></i></label>
+          <input type="text" id="search_item_id" class="form-control" name="search_item_id" placeholder="Type your search Item ID here" autocomplete="off" autofocus required>
         </div>
       </div>
 
@@ -134,7 +133,6 @@
         <table>
           <thead>
             <tr>
-              <th scope="col">#</th>
               <th scope="col">Item ID</th>
               <th scope="col">Name</th>
               <th scope="col">Category</th>
@@ -151,5 +149,6 @@
 
   <!-- Font Awesome for the search icon -->
   <script src="https://kit.fontawesome.com/03a09689fa.js" crossorigin="anonymous"></script>
+  <script type="module" src="info_delete.js"></script>
 </body>
 </html>
