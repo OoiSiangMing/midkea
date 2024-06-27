@@ -1,5 +1,5 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -43,8 +43,17 @@ searchBtn.addEventListener('click', (e) => {
                 <td>${data.Name}</td>
                 <td>${data.Category}</td>
                 <td>${data.Price}</td>
+                <td><button class="btn btn-danger delete-btn" data-item-id="${itemId}">Delete</button></td>
             `;
             tableBody.appendChild(newRow);
+
+            // Attach event listener to delete button
+            const deleteBtn = newRow.querySelector('.delete-btn');
+            deleteBtn.addEventListener('click', () => {
+                const itemToDeleteId = deleteBtn.getAttribute('data-item-id');
+                deleteItemFromDatabase(itemToDeleteId);
+            });
+
         } else {
             alert('Item ID not found');
             // Clear table if item not found
@@ -54,6 +63,21 @@ searchBtn.addEventListener('click', (e) => {
         console.error('Error fetching item data:', error);
     });
 });
+
+function deleteItemFromDatabase(itemId) {
+    const dbRef = ref(database);
+    const itemRef = child(dbRef, `Inventory Info/Item ID: ${itemId}`);
+
+    remove(itemRef)
+    .then(() => {
+        alert('Item deleted successfully!');
+        // Optionally clear the table or handle UI update
+        tableBody.innerHTML = '';
+    })
+    .catch((error) => {
+        console.error('Error deleting item:', error);
+    });
+}
 
 // Restrict item ID input to a maximum of 4 digits
 const updateItemIdInput = document.getElementById('search_item_id');
