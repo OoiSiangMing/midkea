@@ -3,13 +3,13 @@ import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/fi
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_AUTH_DOMAIN",
-    databaseURL: "YOUR_DATABASE_URL",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_STORAGE_BUCKET",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
+    authDomain: "midkea-571f4.firebaseapp.com",
+    databaseURL: "https://midkea-571f4-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "midkea-571f4",
+    storageBucket: "midkea-571f4.appspot.com",
+    messagingSenderId: "371876454277",
+    appId: "1:371876454277:web:19b7e9ce993cfec2792eec"
 };
 
 // Initialize Firebase
