@@ -37,6 +37,7 @@ searchBtn.addEventListener('click', (e) => {
             tableBody.innerHTML = '';
             // Create new row with fetched data
             const newRow = document.createElement('tr');
+            newRow.classList.add('table-row'); // Add the CSS class for white background
             newRow.innerHTML = `
                 <td>${data['Item ID']}</td>
                 <td>${data.Name}</td>
@@ -52,4 +53,11 @@ searchBtn.addEventListener('click', (e) => {
     }).catch((error) => {
         console.error('Error fetching item data:', error);
     });
+});
+
+// Restrict item ID input to a maximum of 4 digits
+const updateItemIdInput = document.getElementById('search_item_id');
+
+updateItemIdInput.addEventListener('input', () => {
+    updateItemIdInput.value = updateItemIdInput.value.replace(/[^0-9]/g, '').slice(0, 4);
 });
