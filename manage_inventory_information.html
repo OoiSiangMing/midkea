@@ -2,45 +2,103 @@
 <html>
 
 <head>
-	<link rel="stylesheet" href="public/css/manage_inventory_information.css" />
-	<script src="https://kit.fontawesome.com/03a09689fa.js" crossorigin="anonymous"></script>
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" href="public/css/manage_inventory_information.css" />
+  <script src="https://kit.fontawesome.com/03a09689fa.js" crossorigin="anonymous"></script>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: url('public/img/background.jpeg');
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
 
-	<meta charset="UTF-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    section {
+      text-align: center;
+    }
+
+    .welcome {
+      margin-bottom: 20px;
+    }
+
+    .shop_name_container {
+      margin-bottom: 20px;
+    }
+
+    .shop_name img {
+      vertical-align: middle;
+      margin: -75px 50px;
+    }
+
+    .shop_name {
+      font-size: 2em;
+      display: inline-block;
+      margin: 0;
+    }
+
+    .back_container {
+      margin-bottom: 20px;
+    }
+
+    .back {
+      display: inline-block;
+      padding: 10px 20px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .back:hover {
+      background-color: #0056b3;
+    }
+
+    .button-container a {
+      display: inline-block;
+      padding: 10px 20px;
+      margin: 10px;
+      font-size: 16px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .button-container a:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 
+<body>
+  <section>
+    <div class="welcome">
+      <div class="shop_name_container">
+        <h1 class="shop_name">
+          <img src="public/img/midkea.jpg" width="100" height="100"> Manage Stock Information
+        </h1>
+      </div>
 
+      <div class="back_container">
+        <a href="adminpagemidkea.html" class="back">Back</a>
+      </div>
+    </div>
 
-<body
-	style="display: flex; justify-content: center; align-items: center; min-height: 100vh; background: url('public/img/background.jpeg'); margin: 0;">
-	<section>
-
-		<div class="welcome">
-			<div class="shop_name_container">
-				<h1 class="shop_name">
-					<img src="public/img/midkea.jpg" width="100" height="100"
-						style="vertical-align:middle;margin:-75px 50px">Manage Stock Information
-				</h1>
-			</div>
-
-			<div class="back_container">
-				<a href="adminpagemidkea.html" class="back">Back</a>
-			</div>
-		</div>
-
-
-		<div class="button-container">
-			<a href="info_add.html">Add Info</a> <!--enter ID first, then view Detail then update and delete-->
-			<a href="info_edit.html">Update Info</a>
-			<a href="info_delete.html">Delete Info</a>
-			<a href="info_midkealist.html">List Info</a>
-		</div>
-
-	</section>
+    <div class="button-container">
+      <a href="info_add.html">Add Info</a>
+      <a href="info_edit.html">Update Info</a>
+      <a href="info_delete.html">Delete Info</a>
+      <a href="info_list.html">List Info</a>
+    </div>
+  </section>
 </body>
 
 <script src="adminpagemidkea.py"></script>
