@@ -16,10 +16,6 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-// Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const database = getDatabase(app);
-
 const searchBtn = document.getElementById('searchBtn');
 const searchItemId = document.getElementById('search_item_id');
 const tableBody = document.getElementById('tableBody');
