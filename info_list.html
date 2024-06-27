@@ -60,7 +60,7 @@
         }
 
         .table th, .table td {
-            border: 1px solid #ccc;
+            border: 1px solid #000000;
             padding: 10px;
             text-align: left;
         }
@@ -104,6 +104,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Item ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
@@ -121,17 +122,21 @@
             const tableBody = document.getElementById('tableBody');
             tableBody.innerHTML = ''; // Clear existing rows
 
+            let rowIndex = 1; // Initialize row index
+
             for (const key in data) {
                 if (data.hasOwnProperty(key)) {
                     const item = data[key];
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
+                        <td>${rowIndex}</td>
                         <td>${item['Item ID']}</td>
                         <td>${item.Name}</td>
                         <td>${item.Category}</td>
                         <td>${item.Price}</td>
                     `;
                     tableBody.appendChild(newRow);
+                    rowIndex++; // Increment row index for the next item
                 }
             }
         });
