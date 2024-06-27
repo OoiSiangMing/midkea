@@ -85,6 +85,17 @@
       background-color: #0056b3;
     }
 
+    .btn-danger {
+      background-color: #dc3545;
+      color: #fff;
+      padding: 5px 10px;
+      font-size: 14px;
+    }
+
+    .btn-danger:hover {
+      background-color: #c82333;
+    }
+
     /* Table styles */
     table {
       width: 100%;
@@ -110,6 +121,16 @@
       .container {
         padding: 10px;
       }
+    }
+
+    /* Hide the delete button initially */
+    .delete-container {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    .delete-container.hidden {
+      display: none;
     }
   </style>
 </head>
@@ -147,6 +168,11 @@
           </tbody>
         </table>
       </div>
+    </div>
+
+    <!-- Delete Button Container -->
+    <div id="deleteContainer" class="delete-container hidden">
+      <button id="deleteBtn" class="btn btn-danger">Delete</button>
     </div>
   </div>
 

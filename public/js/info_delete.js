@@ -3,13 +3,7 @@ import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/fi
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
-    authDomain: "midkea-571f4.firebaseapp.com",
-    databaseURL: "https://midkea-571f4-default-rtdb.asia-southeast1.firebasedatabase.app/",
-    projectId: "midkea-571f4",
-    storageBucket: "midkea-571f4.appspot.com",
-    messagingSenderId: "371876454277",
-    appId: "1:371876454277:web:19b7e9ce993cfec2792eec"
+    // Your Firebase configuration
 };
 
 // Initialize Firebase
@@ -19,6 +13,8 @@ const database = getDatabase(app);
 const searchBtn = document.getElementById('searchBtn');
 const searchItemId = document.getElementById('search_item_id');
 const tableBody = document.getElementById('tableBody');
+const deleteContainer = document.getElementById('deleteContainer');
+const deleteBtn = document.getElementById('deleteBtn');
 
 searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
@@ -43,25 +39,27 @@ searchBtn.addEventListener('click', (e) => {
                 <td>${data.Name}</td>
                 <td>${data.Category}</td>
                 <td>${data.Price}</td>
-                <td><button class="btn btn-danger delete-btn" data-item-id="${itemId}">Delete</button></td>
             `;
             tableBody.appendChild(newRow);
 
-            // Attach event listener to delete button
-            const deleteBtn = newRow.querySelector('.delete-btn');
-            deleteBtn.addEventListener('click', () => {
-                const itemToDeleteId = deleteBtn.getAttribute('data-item-id');
-                deleteItemFromDatabase(itemToDeleteId);
-            });
+            // Show the delete button
+            deleteContainer.classList.remove('hidden');
+            deleteBtn.setAttribute('data-item-id', itemId);
 
         } else {
             alert('Item ID not found');
             // Clear table if item not found
             tableBody.innerHTML = '';
+            deleteContainer.classList.add('hidden');
         }
     }).catch((error) => {
         console.error('Error fetching item data:', error);
     });
+});
+
+deleteBtn.addEventListener('click', () => {
+    const itemToDeleteId = deleteBtn.getAttribute('data-item-id');
+    deleteItemFromDatabase(itemToDeleteId);
 });
 
 function deleteItemFromDatabase(itemId) {
@@ -73,6 +71,7 @@ function deleteItemFromDatabase(itemId) {
         alert('Item deleted successfully!');
         // Optionally clear the table or handle UI update
         tableBody.innerHTML = '';
+        deleteContainer.classList.add('hidden');
     })
     .catch((error) => {
         console.error('Error deleting item:', error);
