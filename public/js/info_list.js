@@ -1,6 +1,6 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, get, set, child, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
-
+    import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+    
 // Your web app's Firebase configuration
 const firebaseConfig = {
     apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
@@ -15,6 +15,22 @@ const firebaseConfig = {
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
+
+document.getElementById('listInfoBtn').addEventListener('click', (e) => {
+    e.preventDefault();
+    const dbRef = ref(database);
+    get(child(dbRef, 'Inventory Info')).then((snapshot) => {
+        if (snapshot.exists()) {
+            const data = snapshot.val();
+            localStorage.setItem('inventoryData', JSON.stringify(data));
+            window.location.href = 'info_list.html';
+        } else {
+            alert('No data available');
+        }
+    }).catch((error) => {
+        console.error('Error fetching data:', error);
+    });
+});
 
 
 

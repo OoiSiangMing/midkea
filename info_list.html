@@ -106,10 +106,31 @@
                     <th scope="col">Price</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tableBody">
                 <!-- Your table rows will go here -->
             </tbody>
         </table>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const data = JSON.parse(localStorage.getItem('inventoryData'));
+            const tableBody = document.getElementById('tableBody');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            for (const key in data) {
+                if (data.hasOwnProperty(key)) {
+                    const item = data[key];
+                    const newRow = document.createElement('tr');
+                    newRow.innerHTML = `
+                        <td>${item['Item ID']}</td>
+                        <td>${item.Name}</td>
+                        <td>${item.Category}</td>
+                        <td>${item.Price}</td>
+                    `;
+                    tableBody.appendChild(newRow);
+                }
+            }
+        });
+    </script>
 </body>
 </html>
