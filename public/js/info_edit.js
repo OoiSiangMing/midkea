@@ -81,3 +81,10 @@ const priceInput = document.getElementById('update_price');
 priceInput.addEventListener('input', () => {
     priceInput.value = priceInput.value.replace(/[^0-9.]/g, '');
 });
+
+// Restrict item ID input to a maximum of 4 digits
+const updateItemIdInput = document.getElementById('update_item_id');
+
+updateItemIdInput.addEventListener('input', () => {
+    updateItemIdInput.value = updateItemIdInput.value.replace(/[^0-9]/g, '').slice(0, 4);
+});
