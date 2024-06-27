@@ -3,8 +3,18 @@ import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/fi
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    // Your Firebase configuration
+    apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
+    authDomain: "midkea-571f4.firebaseapp.com",
+    databaseURL: "https://midkea-571f4-default-rtdb.asia-southeast1.firebasedatabase.app/",
+    projectId: "midkea-571f4",
+    storageBucket: "midkea-571f4.appspot.com",
+    messagingSenderId: "371876454277",
+    appId: "1:371876454277:web:19b7e9ce993cfec2792eec"
 };
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
