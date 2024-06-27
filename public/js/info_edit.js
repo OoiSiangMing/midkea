@@ -55,6 +55,7 @@ updateForm.addEventListener('submit', (e) => {
   if (itemId === '' || name === '' || category === '' || price === '') {
       alert('Please search the item ID first');
       return; // Stop the form submission
+      form.reset();// Clear the form
   }
 
   update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
@@ -83,7 +84,7 @@ priceInput.addEventListener('input', () => {
 });
 
 // Restrict item ID input to a maximum of 4 digits
-const updateItemIdInput = document.getElementById('update_item_id');
+const updateItemIdInput = document.getElementById('search_item_id');
 
 updateItemIdInput.addEventListener('input', () => {
     updateItemIdInput.value = updateItemIdInput.value.replace(/[^0-9]/g, '').slice(0, 4);
