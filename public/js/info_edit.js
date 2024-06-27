@@ -54,8 +54,9 @@ updateForm.addEventListener('submit', (e) => {
   // Validate input fields
   if (itemId === '' || name === '' || category === '' || price === '') {
       alert('Please search the item ID first');
-      return; // Stop the form submission
       updateForm.reset();// Clear the form
+      return; // Stop the form submission
+      
   }
 
   update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
