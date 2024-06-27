@@ -66,7 +66,7 @@
         }
 
         .table th {
-            background-color: #a7e4f3;
+            background-color: #80e5ff;
         }
 
         .table-striped tbody tr:nth-child(odd) {
@@ -74,7 +74,7 @@
         }
 
         .table-striped tbody tr:nth-child(even) {
-            background-color: #f9f9f9; 
+            background-color: #dddddd; 
         }
 
         /* Responsive adjustments */
@@ -104,6 +104,7 @@
         <table class="table table-striped">
             <thead>
                 <tr>
+                    <th scope="col">#</th>
                     <th scope="col">Item ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Category</th>
@@ -126,7 +127,8 @@
                     const item = data[key];
                     const newRow = document.createElement('tr');
                     newRow.innerHTML = `
-                        <td>${item['Item ID']}</td>
+                        <td>${rowIndex}</td> <!-- Row number -->
+                        <td>${item.itemId}</td>
                         <td>${item.Name}</td>
                         <td>${item.Category}</td>
                         <td>${item.Price}</td>
