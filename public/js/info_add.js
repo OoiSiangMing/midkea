@@ -37,7 +37,7 @@ form.addEventListener('submit', (e) => {
 
   // Validate Item ID to be exactly 4 digits and numeric only
   if (!/^\d{4}$/.test(itemId)) {
-    alert('Error: Item ID must be exactly 4 digits and numeric only.');
+    alert('Error: Item ID must be exactly 4 digits.');
     return; // Stop the form submission
   }
 
