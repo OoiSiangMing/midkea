@@ -16,11 +16,11 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
-const searchForm = document.getElementById('search-form');
+const searchBtn = document.getElementById('searchBtn');
 const searchItemId = document.getElementById('search_item_id');
-const tbody = document.querySelector('table tbody');
+const tableBody = document.getElementById('tableBody');
 
-searchForm.addEventListener('submit', (e) => {
+searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const itemId = searchItemId.value.trim();
     
@@ -33,9 +33,9 @@ searchForm.addEventListener('submit', (e) => {
     get(child(dbRef, `Inventory Info/Item ID: ${itemId}`)).then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
-            // Clear the table body
-            tbody.innerHTML = '';
-            // Insert new row with fetched data
+            // Clear previous table rows
+            tableBody.innerHTML = '';
+            // Create new row with fetched data
             const newRow = document.createElement('tr');
             newRow.innerHTML = `
                 <td>${data['Item ID']}</td>
@@ -43,11 +43,11 @@ searchForm.addEventListener('submit', (e) => {
                 <td>${data.Category}</td>
                 <td>${data.Price}</td>
             `;
-            tbody.appendChild(newRow);
+            tableBody.appendChild(newRow);
         } else {
             alert('Item ID not found');
-            // Clear the table body if no data found
-            tbody.innerHTML = '';
+            // Clear table if item not found
+            tableBody.innerHTML = '';
         }
     }).catch((error) => {
         console.error('Error fetching item data:', error);
