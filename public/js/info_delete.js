@@ -3,16 +3,16 @@ import { getDatabase, ref, get, child, remove } from "https://www.gstatic.com/fi
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
-    authDomain: "midkea-571f4.firebaseapp.com",
-    databaseURL: "https://midkea-571f4-default-rtdb.asia-southeast1.firebasedatabase.app/",
-    projectId: "midkea-571f4",
-    storageBucket: "midkea-571f4.appspot.com",
-    messagingSenderId: "371876454277",
-    appId: "1:371876454277:web:19b7e9ce993cfec2792eec"
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_AUTH_DOMAIN",
+    databaseURL: "YOUR_DATABASE_URL",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_STORAGE_BUCKET",
+    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
+    appId: "YOUR_APP_ID"
 };
 
-// Initialize Firebases
+// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const database = getDatabase(app);
 
@@ -64,8 +64,10 @@ searchBtn.addEventListener('click', (e) => {
 });
 
 deleteBtn.addEventListener('click', () => {
-    const itemToDeleteId = deleteBtn.getAttribute('data-item-id');
-    deleteItemFromDatabase(itemToDeleteId);
+    const confirmDelete = deleteBtn.getAttribute('data-item-id');
+    if (confirm("Are you sure you want to delete this data?")) {
+        deleteItemFromDatabase(confirmDelete);
+    }
 });
 
 function deleteItemFromDatabase(itemId) {

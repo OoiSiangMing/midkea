@@ -34,6 +34,7 @@ searchBtn.addEventListener('click', (e) => {
             document.getElementById('update_price').value = data.Price;
         } else {
             alert('Item ID not found');
+            searchItemId.reset();
         }
     }).catch((error) => {
         console.error('Error fetching item data:', error);
