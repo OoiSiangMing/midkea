@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', () => {
               const adminData = snapshot.val();
               console.log('Admin Data:', adminData);  // Debugging statement
 
-              if (adminData['Admin Password123'] === password) {
+              if (adminData['Admin Password'] === password) {
                   // Password matches, redirect to admin page
                   window.location.href = "adminpagemidkea.html";
               } else {
