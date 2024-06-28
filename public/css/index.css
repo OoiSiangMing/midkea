@@ -1,6 +1,6 @@
 body {
   background-color: #faeee3;
-  margin: 0;
+  margin: 1;
   font-family: 'Raleway', sans-serif; /* Added a custom font family */
 }
 
@@ -9,7 +9,6 @@ body {
   border-radius: 0;
   z-index: 1000; /* Ensure navbar is above other content */
   position: relative; /* Ensure relative positioning for z-index to work */
-  background-color: #000; /* Set navbar background color to black */
 }
 
 .cover_page {
