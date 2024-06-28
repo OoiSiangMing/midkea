@@ -57,7 +57,7 @@ searchBtn.addEventListener('click', (e) => {
             // Clear table if item not found
             tableBody.innerHTML = '';
             deleteContainer.classList.add('hidden');
-            search_item_id.reset();
+            searchItemId.reset();
         }
     }).catch((error) => {
         console.error('Error fetching item data:', error);
