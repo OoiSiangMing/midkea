@@ -19,27 +19,47 @@ const database = getDatabase(app);
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.querySelector('.login');
-  
+
   loginForm.addEventListener('submit', (event) => {
       event.preventDefault(); // Prevent form from submitting the default way
 
       const adminID = document.getElementById('adminID').value.trim();
       const password = document.getElementById('password').value.trim();
 
+      if (!adminID || !password) {
+          alert('Please enter both Admin ID and password.');
+          return;
+      }
+
       // Reference to the database
-      const dbRef = ref(database, 'Admin Login/' + adminID);
+      const dbRef = ref(database, 'Admin Login');
 
       get(dbRef).then((snapshot) => {
           if (snapshot.exists()) {
-              const adminData = snapshot.val();
-              if (adminData['Admin Password'] === password) {
+              const adminLoginData = snapshot.val();
+              let isValidUser = false;
+
+              // Iterate through all admin entries
+              for (const key in adminLoginData) {
+                  if (adminLoginData[key]['Admin ID'] === adminID) {
+                      if (adminLoginData[key]['Admin Password'] === password) {
+                          isValidUser = true;
+                          break;
+                      } else {
+                          alert('Invalid password.');
+                          return;
+                      }
+                  }
+              }
+
+              if (isValidUser) {
                   // Password matches, redirect to admin page
                   window.location.href = "adminpagemidkea.html";
               } else {
-                  alert('Invalid password.');
+                  alert('Admin ID does not exist.');
               }
           } else {
-              alert('Admin ID does not exist.');
+              alert('No admin data found.');
           }
       }).catch((error) => {
           console.error('Error fetching admin data:', error);
