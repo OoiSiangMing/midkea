@@ -14,14 +14,6 @@ h2{
 }
 
 
-body {
-
-  background-image: url("public/img/adminbg.jpg");
-  background-size: cover;
-  background-attachment: fixed;
-  overflow: hidden;
-}
-
 .container {
 	display: flex;
 	align-items: center;
