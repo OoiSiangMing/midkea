@@ -1,6 +1,6 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
-import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+import { getDatabase, ref, get, child, update } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
@@ -38,8 +38,28 @@ document.addEventListener('DOMContentLoaded', () => {
               console.log('Admin Data:', adminData);  // Debugging statement
 
               if (adminData['Admin Password'] === password) {
-                  // Password matches, redirect to admin page
-                  window.location.href = "adminpagemidkea.html";
+                  // Password matches, update last login time and redirect to admin page
+                  const formatter = new Intl.DateTimeFormat('en-US', {
+                      timeZone: 'Asia/Kuala_Lumpur',
+                      year: 'numeric',
+                      month: '2-digit',
+                      day: '2-digit',
+                      hour: '2-digit',
+                      minute: '2-digit',
+                      second: '2-digit',
+                      hour12: false,
+                  });
+                  const lastLoginTime = formatter.format(new Date());
+
+                  const updates = {};
+                  updates['LastLoginTime'] = lastLoginTime;
+
+                  update(dbRef, updates).then(() => {
+                      window.location.href = "adminpagemidkea.html";
+                  }).catch((error) => {
+                      console.error('Error updating last login time:', error);
+                      alert('Failed to update last login time.');
+                  });
               } else {
                   alert('Invalid password.');
               }
