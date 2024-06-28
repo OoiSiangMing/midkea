@@ -26,40 +26,25 @@ document.addEventListener('DOMContentLoaded', () => {
       const adminID = document.getElementById('adminID').value.trim();
       const password = document.getElementById('password').value.trim();
 
-      if (!adminID || !password) {
-          alert('Please enter both Admin ID and password.');
-          return;
-      }
-
       // Reference to the database
-      const dbRef = ref(database, 'Admin Login');
+      const dbRef = ref(database, 'Admin Login/' + adminID);
+
+      console.log('Admin ID:', adminID);  // Debugging statement
+      console.log('Password:', password);  // Debugging statement
 
       get(dbRef).then((snapshot) => {
           if (snapshot.exists()) {
-              const adminLoginData = snapshot.val();
-              let isValidUser = false;
+              const adminData = snapshot.val();
+              console.log('Admin Data:', adminData);  // Debugging statement
 
-              // Iterate through all admin entries
-              for (const key in adminLoginData) {
-                  if (adminLoginData[key]['Admin ID'] === adminID) {
-                      if (adminLoginData[key]['Admin Password'] === password) {
-                          isValidUser = true;
-                          break;
-                      } else {
-                          alert('Invalid password.');
-                          return;
-                      }
-                  }
-              }
-
-              if (isValidUser) {
+              if (adminData['Admin Password'] === password) {
                   // Password matches, redirect to admin page
                   window.location.href = "adminpagemidkea.html";
               } else {
-                  alert('Admin ID does not exist.');
+                  alert('Invalid password.');
               }
           } else {
-              alert('No admin data found.');
+              alert('Admin ID does not exist.');
           }
       }).catch((error) => {
           console.error('Error fetching admin data:', error);
