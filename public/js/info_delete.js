@@ -54,7 +54,6 @@ searchBtn.addEventListener('click', (e) => {
 
         } else {
             alert('Item ID not found');
-            searchItemId.reset();
             // Clear table if item not found
             tableBody.innerHTML = '';
             deleteContainer.classList.add('hidden');
