@@ -59,7 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
   
                     const updates = {};
                     updates['LastLoginTime'] = lastLoginTime;
-  
+                    
                     update(dbRef, updates).then(() => {
                         window.location.href = "adminpagemidkea.html";
                     }).catch((error) => {
