@@ -1,3 +1,7 @@
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
+import { getDatabase, ref, get, child } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js";
+
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: "AIzaSyAgZwA1oGjJnfGRgjWkIICfWhFELj8dxmU",
@@ -10,8 +14,8 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = firebase.initializeApp(firebaseConfig);
-const database = firebase.database();
+const app = initializeApp(firebaseConfig);
+const database = getDatabase(app);
 
 document.addEventListener('DOMContentLoaded', () => {
   const loginForm = document.querySelector('.login');
@@ -23,12 +27,12 @@ document.addEventListener('DOMContentLoaded', () => {
       const password = document.getElementById('password').value.trim();
 
       // Reference to the database
-      const dbRef = firebase.database().ref('Admin Login/' + adminID);
+      const dbRef = ref(database, 'Admin Login/' + adminID);
 
       console.log('Admin ID:', adminID);  // Debugging statement
       console.log('Password:', password);  // Debugging statement
 
-      dbRef.get().then((snapshot) => {
+      get(dbRef).then((snapshot) => {
           if (snapshot.exists()) {
               const adminData = snapshot.val();
               console.log('Admin Data:', adminData);  // Debugging statement
