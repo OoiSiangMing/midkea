@@ -4,6 +4,13 @@ body {
   font-family: 'Raleway', sans-serif; /* Added a custom font family */
 }
 
+.container {
+  text-align: center;
+  padding: 20px;
+  position: relative;
+  z-index: 2;
+}
+
 .navbar {
   margin-bottom: 0;
   border-radius: 0;
