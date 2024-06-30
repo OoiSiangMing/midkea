@@ -19,10 +19,10 @@ const database = getDatabase(app);
 document.getElementById('listInfoBtn').addEventListener('click', (e) => {
     e.preventDefault();
     const dbRef = ref(database);
-    get(child(dbRef, 'Inventory Info')).then((snapshot) => {
+    get(child(dbRef, 'Stock Info')).then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
-            localStorage.setItem('inventoryData', JSON.stringify(data));
+            localStorage.setItem('stockData', JSON.stringify(data));
             window.location.href = 'info_list.html';
         } else {
             alert('No data available');

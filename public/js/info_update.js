@@ -24,7 +24,7 @@ searchBtn.addEventListener('click', (e) => {
     e.preventDefault();
     const itemId = searchItemId.value;
     const dbRef = ref(database);
-    get(child(dbRef, `Inventory Info/Item ID: ${itemId}`)).then((snapshot) => {
+    get(child(dbRef, `Stock Info/Item ID: ${itemId}`)).then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
             // Fill the update form with the existing data
@@ -60,7 +60,7 @@ updateForm.addEventListener('submit', (e) => {
       
   }
 
-  update(ref(database, `Inventory Info/Item ID: ${itemId}`), {
+  update(ref(database, `Stock Info/Item ID: ${itemId}`), {
       'Item ID': itemId,
       'Name': name,
       'Category': category,

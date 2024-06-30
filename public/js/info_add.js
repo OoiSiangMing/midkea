@@ -46,13 +46,13 @@ form.addEventListener('submit', (e) => {
   const dbRef = ref(database);
 
   // Check if the Item ID already exists
-  get(child(dbRef, `Inventory Info/Item ID: ${itemId}`)).then((snapshot) => {
+  get(child(dbRef, `Stock Info/Item ID: ${itemId}`)).then((snapshot) => {
     if (snapshot.exists()) {
       // Item ID already exists
       alert('Error: Item ID already exists. Please use a different Item ID.');
     } else {
       // Item ID does not exist, create a new record
-      set(ref(database, 'Inventory Info/Item ID: ' + itemId), {
+      set(ref(database, 'Stock Info/Item ID: ' + itemId), {
         'Item ID': itemId,
         'Name': name,
         'Category': category,

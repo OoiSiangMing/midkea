@@ -32,7 +32,7 @@ searchBtn.addEventListener('click', (e) => {
     }
     
     const dbRef = ref(database);
-    get(child(dbRef, `Inventory Info/Item ID: ${itemId}`)).then((snapshot) => {
+    get(child(dbRef, `Stock Info/Item ID: ${itemId}`)).then((snapshot) => {
         if (snapshot.exists()) {
             const data = snapshot.val();
             // Clear previous table rows
@@ -72,7 +72,7 @@ deleteBtn.addEventListener('click', () => {
 
 function deleteItemFromDatabase(itemId) {
     const dbRef = ref(database);
-    const itemRef = child(dbRef, `Inventory Info/Item ID: ${itemId}`);
+    const itemRef = child(dbRef, `Stock Info/Item ID: ${itemId}`);
 
     remove(itemRef)
     .then(() => {
