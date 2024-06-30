@@ -78,3 +78,10 @@ const itemIdInput = document.getElementById('item_id');
 itemIdInput.addEventListener('input', () => {
   itemIdInput.value = itemIdInput.value.replace(/[^0-9]/g, '').slice(0, 4);
 });
+
+// Restrict input to numbers and dot only
+const priceInput = document.getElementById('price');
+
+priceInput.addEventListener('input', () => {
+    priceInput.value = priceInput.value.replace(/[^0-9.]/g, '');
+});
